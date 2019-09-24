@@ -1,5 +1,5 @@
 <?php
- require_once "korpa.php";
+ require_once "../Model/modelKorpa.php";
 
  if (!isset($_GET['metoda']))
  {
@@ -25,11 +25,26 @@
              $id=$_GET['id'];
              $boja=$_GET['boja'];
              $korpa->obrisiIzKorpe($id,$boja);
-             $naziv=($modelWeb->vratiProizvodID($id))['naziv'];
+             $naziv=($modelWeb->vratiProizvod($id))['naziv'];
              echo "Iz korpe je obrisan $naziv sa bojom $boja!";
          }
      }
+     elseif($metoda==='dodaj')
+     {
+        if(!isset($_GET['id']) or !isset($_GET['boja']) or !isset($_GET['kolicina']))
+        {
+            die("");
+        }
+        else{
+            $id=$_GET['id'];
+            $boja=$_GET['boja'];
+            $kolicina=$_GET['kolicina'];
 
+            $korpa->dodajUKorpu($id,$boja,$kolicina);
+
+            echo "Dodato";
+        }
+     }
  }
 
  

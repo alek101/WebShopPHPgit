@@ -32,7 +32,7 @@
 
         </table>
 
-        <p> Ukupna cena je: <?php echo $viewKorpa->ukupnaCena(); ?> necega. </p>
+        <p> Ukupna cena je: <?php echo $korpa->ukupnaCena(); ?> necega. </p>
 
         <p><button class="dugme kupi">Kupi</button></p>
         <p>

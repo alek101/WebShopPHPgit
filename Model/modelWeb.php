@@ -2,7 +2,7 @@
     // define("BAZA",dirname(__FILE__).'/');
     // echo BAZA;
 
-    //baza popdataka
+    //baza popdataka, gde se nalaze svi nasi proizvodi
     $proizvodiBaza=[
         ['id'=>1, 'naziv'=>'sto', 'slika'=>'sto.jpg', 'cena'=>500, 'kolicina'=>['crna'=>10, 'bela'=>8, 'zuta'=>3, 'bezz'=>12, 'tropska paprika'=>0]],
         ['id'=>5, 'naziv'=>'stolica', 'slika'=>'stolica.jpg', 'cena'=>300, 'kolicina'=>['crna'=>23, 'bela'=>16, 'zuta'=>10, 'bezz'=>0, 'tropska paprika'=>5]],
@@ -19,7 +19,7 @@
             $this->proizvodi=$proizvodi;
         }
 
-        public function vratiProizvodID($id)
+        public function vratiProizvod($id)
         {
             forEach($this->proizvodi as $proizvod)
             {
@@ -30,20 +30,9 @@
             }
         }
 
-        // public function filterID($id)
-        // {
-        //     //uvek vraca niz!!!!
-        //     return array_filter($this->proizvodi, function ($proizvod) use ($id)
-        //     {
-        //         if($proizvod['id']==$id)
-        //         {
-        //             return $proizvod;
-        //         }
-        //     });
-        // }
-
         public function filterKolicine($proizvod,$kriterijum=0)
         {
+            //vraca niz boja=>kolicine za kolicine vece od zadataog kriterijuma
             $niz=[];
             forEach($proizvod["kolicina"] as $boja=>$kol)
             {

@@ -1,6 +1,6 @@
 <?php
     
-    require_once "Controller/korpa.php";
+    require_once "Model/modelKorpa.php";
   
 
     class ViewKorpa
@@ -8,10 +8,10 @@
         private $korpaS=[];        
         private $model;
 
-        public function __construct($korpaS,$model)
+        public function __construct($model,$korpaS)
         {
-            $this->korpaS=$korpaS;
             $this->model=$model;
+            $this->korpaS=$korpaS;
         }
 
         public function napraviTabelu()
@@ -19,7 +19,7 @@
             $rez="";
             forEach($this->korpaS as $id=>$proizvodKorpa)
             {
-                $proizvod=$this->model->vratiProizvodID($id);
+                $proizvod=$this->model->vratiProizvod($id);
                 $ime=$proizvod['naziv'];
                 $cena=$proizvod['cena'];
                 forEach($proizvodKorpa as $boja=>$kolicina)
@@ -38,24 +38,9 @@
             echo $rez;
         }
 
-        public function ukupnaCena()
-        {
-            $rez=0;
-            forEach($this->korpaS as $id=>$proizvodKorpa)
-            {
-                $proizvod=$this->model->vratiProizvodID($id);
-                $cena=$proizvod['cena'];
-                forEach($proizvodKorpa as $boja=>$kolicina)
-                {
-                    $rez+=$kolicina*$cena;
-                }
-            }
-            return $rez;
-        }
-
     }
 
 
-    $viewKorpa=new ViewKorpa($korpaD,$modelWeb);
+    $viewKorpa=new ViewKorpa($modelWeb,$korpaD);
 
 ?>

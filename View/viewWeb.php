@@ -41,7 +41,7 @@
         {
             forEach($nizID as $id)
             {
-                $proizvod=$this->model->vratiProizvodID($id);
+                $proizvod=$this->model->vratiProizvod($id);
                 $this->prikaziProizvodKrace($proizvod);
             }
         }
@@ -55,7 +55,7 @@
 
         public function prikaziProizvodDuze($id)
         {
-            $proizvod=$this->model->vratiProizvodID($id);
+            $proizvod=$this->model->vratiProizvod($id);
             $ind=$proizvod['id'];
             echo "<div class='itemL'><p class='nameL'>". $proizvod['naziv']." </p> 
                 <p><img src='Slike/".$proizvod['slika']."' alt='nema' width='720px' height='720px'></p>
